@@ -1,0 +1,90 @@
+#include<iostream>
+using namespace std;
+int i;
+class item{
+    int itemcode[30];
+    float itemprice[30];
+    int count;
+    public:
+    void init()
+    {
+        count=0;
+    }
+    void additem();
+    void removeitem();
+    void displayitem();
+    void displaytotal();
+};
+void item:: additem()
+{
+    cout<<"Enter the item code:";
+    cin>>itemcode[count];
+    cout<<"Enter the item price:\n";
+    cin>>itemprice[count];
+    count++;
+}
+void item:: removeitem()
+{
+    int rem;
+    cout<<"Enter the item code:";
+    cin>>rem;
+    for(i=0;i<count;i++)
+    if(itemcode[i]==rem)
+    itemprice[i]=0;
+}
+void item::displaytotal()
+{
+    int sum=0;
+    cout<<"Your total bill is";
+    for(i=0;i<count;i++)
+    
+        sum=sum+itemprice[i];
+        cout<<" "<<sum;
+}
+void item::displayitem()
+{
+    for(i=0;i<count;i++)
+    {
+        cout<<itemcode[i]<<" ";
+        cout<<itemprice[i]<<"\n";
+    }
+}
+int main()
+{
+    item order1;
+    order1.init();
+    int a;
+    do
+    {
+        cout<<"\n Welcome to kaif shaikh siddique site\n";
+        cout<<"********************************\t\n";
+        cout<<"select one of the following: \n";
+        cout<<"press 1 to add item:\n";
+        cout<<"press 2 to remove item:\n";
+        cout<<"press 3 to display total:\n";
+        cout<<"press 4 to display all items:\n";
+        cout<<"press 5 to Quit:\n";
+        
+        cin>>a;
+        switch(a)
+        {
+            case 1:
+            order1.additem();
+            break;
+            case 2:
+            order1.removeitem();
+            break;
+            case 3:
+            order1.displaytotal();
+            break;
+            case 4:
+            order1.displayitem();
+            break;
+            case 5:
+            break;
+            
+        }
+    }
+    while(a!=5);
+    return 0;
+}
